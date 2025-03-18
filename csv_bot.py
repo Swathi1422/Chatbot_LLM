@@ -273,19 +273,19 @@ def load_backlog_data(path: str) -> list[dict]:
 team_members = {
     "Swathi Priya": {
         "Role": "Team Lead", "Department": "AI&DS", "College": "Ramachandra College of Engineering",
-        "Email": "dswathipriya22@gmail.com", "Image_Path": r"C:\\Users\\rishi\\Desktop\\Vijaya\\Swathi.jpg"
+        "Email": "dswathipriya22@gmail.com", "Image_Path": r"Swathi.jpg"
     },
     "K. Kasyap": {
         "Roll Number": "21ME1A5421", "Branch": "Artificial Intelligence and Data Science",
-        "Email": "saiumakasyap@gmail.com", "Image_Path": r"C:\\Users\\rishi\\Desktop\\Vijaya\\Kasyap.jpg"
+        "Email": "saiumakasyap@gmail.com", "Image_Path": r"Kasyap.jpg"
     },
     "K. Srihitha": {
         "Roll Number": "21ME1A5433", "Branch": "Artificial Intelligence and Data Science",
-        "Email": "srihithakudaravalli87@gmail.com", "Image_Path": r"C:\\Users\\rishi\\Desktop\\Vijaya\\Srihitha.jpg"
+        "Email": "srihithakudaravalli87@gmail.com", "Image_Path": r"Srihitha.jpg"
     },
     "SK. Asma": {
         "Roll Number": "21ME1A5457", "Branch": "Artificial Intelligence and Data Science",
-        "Email": "asmashaik6281@gmail.com", "Image_Path": r"C:\\Users\\rishi\\Desktop\\Vijaya\\asma.jpg"
+        "Email": "asmashaik6281@gmail.com", "Image_Path": r"asma.jpg"
     }
 }
 
@@ -348,7 +348,7 @@ def main():
         if "input" not in st.session_state:
             st.session_state.input = ""
 
-        pdf_file_paths = [r"C:\Users\rishi\Desktop\GCP\RCEE.pdf"]
+        pdf_file_paths = [r"RCEE.pdf"]
         raw_text = get_pdf_text(pdf_file_paths)
         text_chunks = get_text_chunks(raw_text)
         get_vector_store(text_chunks)
@@ -399,9 +399,9 @@ def main():
         if batch_selection == 'AI & DS 2021-2025':
             st.subheader(f"{batch_selection} Student Marks Portal")
             csv_paths_ai_ds_2021_2025 = {
-                "1-1": r"C:\Users\rishi\Desktop\GCP\2021\1-1sem.csv", "1-2": r"C:\Users\rishi\Desktop\GCP\2021\1-2sem.csv",
-                "2-1": r"C:\Users\rishi\Desktop\GCP\2021\2-1sem.csv", "2-2": r"C:\Users\rishi\Desktop\GCP\2021\2-2sem.csv",
-                "3-1": r"C:\Users\rishi\Desktop\GCP\2021\3-1sem.csv", "3-2": r"C:\Users\rishi\Desktop\GCP\2021\3-2sem.csv",
+                "1-1": r"1-1sem.csv", "1-2": r"1-2sem.csv",
+                "2-1": r"2-1sem.csv", "2-2": r"2-2sem.csv",
+                "3-1": r"3-1sem.csv", "3-2": r"3-2sem.csv",
             }
             semester = st.sidebar.select_slider('Semester:', options=["1-1", "1-2", "2-1", "2-2", "3-1", "3-2"])
             combined_data_2021_2025 = extract_csv(csv_paths_ai_ds_2021_2025[semester])
@@ -426,9 +426,9 @@ def main():
         elif batch_selection == 'AI & DS 2020-2024':
             st.subheader(f"{batch_selection} Student Marks Portal")
             csv_paths_ai_ds_2020_2024 = {
-                "1-1": r"C:/Users/rishi/Desktop/GCP/2020/1-1sems.csv", "1-2": r"C:/Users/rishi/Desktop/GCP/2020/1-2sems.csv",
-                "2-1": r"C:/Users/rishi/Desktop/GCP/2020/2-1sems.csv", "2-2": r"C:/Users/rishi/Desktop/GCP/2020/2-2sems.csv",
-                "3-1": r"C:/Users/rishi/Desktop/GCP/2020/3-1sems.csv", "3-2": r"C:/Users/rishi/Desktop/GCP/2020/3-2sems.csv"
+                "1-1": r"1-1sems.csv", "1-2": r"1-2sems.csv",
+                "2-1": r"2-1sems.csv", "2-2": r"2-2sems.csv",
+                "3-1": r"3-1sems.csv", "3-2": r"3-2sems.csv"
             }
             combined_data_2020_24 = []
             for path in csv_paths_ai_ds_2020_2024.values():
@@ -453,7 +453,7 @@ def main():
     # Backlogs Comparison Mode
     elif app_mode == "📋 Backlogs Comparison":
         st.markdown('<h1 class="fade-in">📋 Backlogs Comparison</h1>', unsafe_allow_html=True)
-        csv_path = r"C:\Users\rishi\Desktop\Vijaya\Backlog.csv"
+        csv_path = r"Backlog.csv"
         csv_data = extract_csv(csv_path)
         
         if csv_data:
