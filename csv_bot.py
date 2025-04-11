@@ -335,11 +335,9 @@ def main():
         app_mode = st.radio("", ["🏛️ College Info", "📊 Student Marks", "📋 Backlogs Comparison", "👥 Team & Project"], 
                            label_visibility="collapsed")
 
-    # Initialize session state for all modes
+    # Initialize session state for modes that need conversation history
     if "college_messages" not in st.session_state:
         st.session_state.college_messages = []
-    if "marks_messages" not in st.session_state:
-        st.session_state.marks_messages = []
     if "backlogs_messages" not in st.session_state:
         st.session_state.backlogs_messages = []
 
@@ -396,12 +394,8 @@ def main():
     elif app_mode == "📊 Student Marks":
         st.markdown('<h1 class="fade-in">📊 Student Result Analysis System</h1>', unsafe_allow_html=True)
         
-        # Display conversation history
-        if not st.session_state.marks_messages:
-            display_chat_message("Hello! I can help analyze student marks. Please provide a roll number and question.", is_user=False)
-        else:
-            for message in st.session_state.marks_messages:
-                display_chat_message(message["content"], is_user=(message["role"] == "user"))
+        # Display initial message (no conversation history)
+        display_chat_message("Hello! I can help analyze student marks. Please provide a roll number and question.", is_user=False)
         
         batch_selection = st.sidebar.selectbox('Batch:', ['Select Batch', 'AI & DS 2021-2025', 'AI & DS 2020-2024'])
         
@@ -422,19 +416,18 @@ def main():
             if st.button("🚀 Analyze My Results", key="marks_analyze"):
                 display_loading_animation()
                 if user_question:
-                    st.session_state.marks_messages.append({"role": "user", "content": user_question})
                     if roll_number_match := re.search(r'\b(20|21)[A-Z]{2}[0-9]{1}[A-Z]{1}[0-9]{4}\b', user_question):
                         roll_number = roll_number_match.group(0)
                         if is_valid_roll_number(roll_number, combined_data_2021_2025):
                             model = genai.GenerativeModel(model_name="gemini-1.5-pro-latest")
                             prompt = f"Analyze this CSV data for semester {semester}:\n{''.join(combined_data_2021_2025)}\nQuestion: {user_question}"
                             response = model.generate_content(prompt)
-                            st.session_state.marks_messages.append({"role": "assistant", "content": response.text})
+                            display_chat_message(user_question, is_user=True)
+                            display_chat_message(response.text, is_user=False)
                         else:
-                            st.session_state.marks_messages.append({"role": "assistant", "content": f"Roll number {roll_number} not found."})
+                            display_chat_message(f"Roll number {roll_number} not found.", is_user=False)
                     else:
-                        st.session_state.marks_messages.append({"role": "assistant", "content": "Please include a valid roll number in your query."})
-                    st.rerun()
+                        display_chat_message("Please include a valid roll number in your query.", is_user=False)
 
         elif batch_selection == 'AI & DS 2020-2024':
             st.subheader(f"{batch_selection} Student Marks Portal")
@@ -454,19 +447,18 @@ def main():
             if st.button("🚀 Analyze My Results", key="marks_analyze_2020"):
                 display_loading_animation()
                 if user_query:
-                    st.session_state.marks_messages.append({"role": "user", "content": user_query})
                     if roll_number_match := re.search(r'\b(20|21)[A-Z]{2}[0-9]{1}[A-Z]{1}[0-9]{4}\b', user_query):
                         roll_number = roll_number_match.group(0)
                         if is_valid_roll_number(roll_number, combined_data_2020_24):
                             model = genai.GenerativeModel(model_name="gemini-1.5-pro-latest")
                             prompt = f"Analyze this CSV data:\n{''.join(combined_data_2020_24)}\nQuestion: {user_query}"
                             response = model.generate_content(prompt)
-                            st.session_state.marks_messages.append({"role": "assistant", "content": response.text})
+                            display_chat_message(user_query, is_user=True)
+                            display_chat_message(response.text, is_user=False)
                         else:
-                            st.session_state.marks_messages.append({"role": "assistant", "content": f"Roll number {roll_number} not found."})
+                            display_chat_message(f"Roll number {roll_number} not found.", is_user=False)
                     else:
-                        st.session_state.marks_messages.append({"role": "assistant", "content": "Please include a valid roll number in your query."})
-                    st.rerun()
+                        display_chat_message("Please include a valid roll number in your query.", is_user=False)
 
     # Backlogs Comparison Mode
     elif app_mode == "📋 Backlogs Comparison":
@@ -479,7 +471,7 @@ def main():
             for message in st.session_state.backlogs_messages:
                 display_chat_message(message["content"], is_user=(message["role"] == "user"))
         
-        csv_path = r"Backlog.csv"
+        csv_path = r"C:\Users\rishi\Desktop\Vijaya\Backlog.csv"
         csv_data = extract_csv(csv_path)
         
         if csv_data:
