@@ -272,19 +272,19 @@ def load_backlog_data(path: str) -> list[dict]:
 # Team Members Data
 team_members = {
     "Swathi Priya": {
-        "Role": "Team Lead", "Department": "AI&DS", "College": "Ramachandra College of Engineering",
+        "Role": "Team Lead", "Roll Number": "21ME1A5414","Department": "Artificial Intelligence & Data Science", "College": "Ramachandra College of Engineering",
         "Email": "dswathipriya22@gmail.com", "Image_Path": r"Swathi.jpg"
     },
     "K. Kasyap": {
-        "Roll Number": "21ME1A5421", "Branch": "Artificial Intelligence and Data Science",
+        "Roll Number": "21ME1A5421", "Department": "Artificial Intelligence and Data Science",
         "Email": "saiumakasyap@gmail.com", "Image_Path": r"Kasyap.jpg"
     },
     "K. Srihitha": {
-        "Roll Number": "21ME1A5433", "Branch": "Artificial Intelligence and Data Science",
+        "Roll Number": "21ME1A5433", "Department": "Artificial Intelligence and Data Science",
         "Email": "srihithakudaravalli87@gmail.com", "Image_Path": r"Srihitha.jpg"
     },
     "SK. Asma": {
-        "Roll Number": "21ME1A5457", "Branch": "Artificial Intelligence and Data Science",
+        "Roll Number": "21ME1A5457", "Department": "Artificial Intelligence and Data Science",
         "Email": "asmashaik6281@gmail.com", "Image_Path": r"asma.jpg"
     }
 }
