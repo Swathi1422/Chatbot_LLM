@@ -515,7 +515,7 @@ def main():
             create_info_card("Project Title", "AI-Powered College Information and Student Performance Chatbot Using LLMs")
             create_info_card("Batch No", "54A03")
             create_info_card("Branch", "Artificial Intelligence & Data Science")
-            create_info_card("Mentor", "Mr. K. Kiran sir")
+            create_info_card("Mentor", "Mr. K. Kiran M.Tech., (Ph.D.)")
             create_info_card("Abstract", """This application leverages large language models (LLMs) to create an interactive chatbot that offers college information and student performance analysis. The College Info function allows users to inquire about topics such as academic programs, faculty, and accreditation. Using a custom PDF parsing function, the chatbot extracts relevant information from college documents, divides it into manageable sections, and stores these in a FAISS vector store to enable efficient semantic search. An LLM then generates contextually accurate answers based on user queries. In addition, the Student Marks function provides an interface for analyzing student results by batch. It retrieves data from CSV files, validates user-input roll numbers, and, when valid, presents relevant academic details. The LLM further processes inquiries related to student data, ensuring clear and accurate responses. Overall, this chatbot combines cutting-edge AI techniques to deliver precise information retrieval and real-time data analysis, offering valuable support for students and administrators alike through an intuitive, accessible platform.""")
 
 if __name__ == "__main__":
