@@ -471,7 +471,7 @@ def main():
             for message in st.session_state.backlogs_messages:
                 display_chat_message(message["content"], is_user=(message["role"] == "user"))
         
-        csv_path = r"C:\Users\rishi\Desktop\Vijaya\Backlog.csv"
+        csv_path = r"Backlog.csv"
         csv_data = extract_csv(csv_path)
         
         if csv_data:
