@@ -276,15 +276,15 @@ team_members = {
         "Email": "dswathipriya22@gmail.com", "Image_Path": r"Swathi.jpg"
     },
     "K. Kasyap": {
-        "Roll Number": "21ME1A5421", "Department": "Artificial Intelligence and Data Science",
+        "Roll Number": "21ME1A5421", "Department": "Artificial Intelligence and Data Science","College": "Ramachandra College of Engineering",
         "Email": "saiumakasyap@gmail.com", "Image_Path": r"Kasyap.jpg"
     },
     "K. Srihitha": {
-        "Roll Number": "21ME1A5433", "Department": "Artificial Intelligence and Data Science",
+        "Roll Number": "21ME1A5433", "Department": "Artificial Intelligence and Data Science","College": "Ramachandra College of Engineering",
         "Email": "srihithakudaravalli87@gmail.com", "Image_Path": r"Srihitha.jpg"
     },
     "SK. Asma": {
-        "Roll Number": "21ME1A5457", "Department": "Artificial Intelligence and Data Science",
+        "Roll Number": "21ME1A5457", "Department": "Artificial Intelligence and Data Science","College": "Ramachandra College of Engineering",
         "Email": "asmashaik6281@gmail.com", "Image_Path": r"asma.jpg"
     }
 }
